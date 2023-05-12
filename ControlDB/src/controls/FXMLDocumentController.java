@@ -117,19 +117,3 @@ public class FXMLDocumentController implements Initializable {
 
     
 }
-
-       /*
-        if (cbNames.getItems() == null)
-            System.out.println("zu Beginn null");
-        cbNames.getItems().add("Hansi");
-        cbNames.getItems().add("Fritz");
-        cbNames.getItems().add("Sepp");
-        cbNames.getItems().add("Maria");
-        //cbNames.setItems(value);
-        ObservableList<String> namesList = FXCollections.observableArrayList(
-                "Vinzent","Mario","Rene"
-        );
-        cbNames.setItems(namesList);
-        cbNames.setVisible(false);          //unsichtbar
-*/
-        
