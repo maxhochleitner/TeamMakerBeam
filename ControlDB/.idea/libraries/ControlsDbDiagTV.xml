@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ControlsDbDiagTV">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/ControlsDbDiagTV.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

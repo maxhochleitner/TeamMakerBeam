@@ -46,23 +46,12 @@ public class FXMLDocumentController implements Initializable {
     private ObservableList<Person> myPersonList;
     private ListProperty<Person> listProperty = new SimpleListProperty(); 
 
-    @FXML
     private ComboBox<Person> cbPersons;
-    @FXML
-    private MenuItem miEdit;
-    @FXML
-    private MenuItem miShow;
-    @FXML
     private TableView<Person> tvPersons;
-    @FXML               //Zeilenobjektklasse, Memberklasse
-    private TableColumn<Person, String> tcLastName;
-    @FXML
+        private TableColumn<Person, String> tcLastName;
     private TableColumn<Person, String> tcFirstName;
-    @FXML
     private TableColumn<Person, Integer> tcYob;
-    @FXML
     private TableColumn<Person, Boolean> tcFullTime;
-    @FXML
     private TableColumn<Person, String> tcCountry;
     
     
@@ -87,7 +76,6 @@ public class FXMLDocumentController implements Initializable {
         
     }    
 
-    @FXML
     private void handleCbPersonsAction(ActionEvent event) {
         //merke den aktuellen Datensatz
         actPerson = cbPersons.getSelectionModel().getSelectedItem();
@@ -95,7 +83,6 @@ public class FXMLDocumentController implements Initializable {
         //lblName.setText(cbPersons.getSelectionModel().getSelectedItem().getLastName());
     }
 
-    @FXML
     private void handleMiEditAction(ActionEvent event) {
         int inx = cbPersons.getSelectionModel().getSelectedIndex();
         if (inx == -1)
@@ -128,9 +115,6 @@ public class FXMLDocumentController implements Initializable {
         actPerson = myPersonList.get(inx);
     }
 
-    @FXML
-    private void handleMiShowAction(ActionEvent event) {
-    }
     
 }
 
