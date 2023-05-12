@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="301.0" prefWidth="418.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.FXMLDocumentController">
+   <children>
+      <ComboBox fx:id="cbPersons" layoutX="72.0" layoutY="37.0" onAction="#handleCbPersonsAction" prefHeight="25.0" prefWidth="170.0" />
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="314.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Person">
+            <items>
+              <MenuItem fx:id="miEdit" mnemonicParsing="false" onAction="#handleMiEditAction" text="Edit" />
+                  <MenuItem fx:id="miShow" mnemonicParsing="false" onAction="#handleMiShowAction" text="Show" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="tvPersons" layoutX="11.0" layoutY="83.0" prefHeight="200.0" prefWidth="395.0">
+        <columns>
+          <TableColumn fx:id="tcLastName" prefWidth="90.0" text="Zuname" />
+          <TableColumn fx:id="tcFirstName" prefWidth="85.0" text="Vorname" />
+            <TableColumn fx:id="tcYob" prefWidth="58.0" text="Geb.Jahr" />
+            <TableColumn fx:id="tcFullTime" prefWidth="58.0" text="Vollzeit" />
+            <TableColumn fx:id="tcCountry" prefWidth="96.0" text="Land" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
