@@ -62,14 +62,14 @@ public class PersonDAO {
      */
     public static void update(Person actPerson) {
         String sql = "UPDATE Spieler SET "
-            + "Vorname = '" + actPerson.getFirstName() + "', "
-            + "Nachname = '" + actPerson.getLastName() + "', "
-            + "Geburtsdatum = " + actPerson.getGebdat() + ", "
+            + "Vorname = '" + actPerson.getVorname() + "', "
+            + "Nachname = '" + actPerson.getNachname() + "', "
+            + "Geburtsdatum = " + actPerson.getGeburtsdatum() + ", "
             + "Nationalitaet = '" + actPerson.getNationalitaet() + "', "
             + "Email = '" + actPerson.getEmail() + "', "
             + "Position = '" + actPerson.getPosition() + "', "
             + "Marktwert = " + actPerson.getMarktwert() + ", "
-            + "ManschaftId = " + actPerson.getMannschaftid() + " "
+            + "ManschaftId = " + actPerson.getMannschaftId() + " "
             + "WHERE SpielerId = " + actPerson.getSpielerId();
         
         System.out.println("sql: " + sql);

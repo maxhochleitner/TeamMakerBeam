@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 26. Mai 2023 um 08:05
--- Server-Version: 10.4.27-MariaDB
--- PHP-Version: 8.2.0
+-- Erstellungszeit: 26. Mai 2023 um 11:32
+-- Server-Version: 10.4.6-MariaDB
+-- PHP-Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `fußballmanagment`
+-- Datenbank: `fussballmanagment`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +34,7 @@ CREATE TABLE `mannschaft` (
   `Marktwert` double DEFAULT NULL,
   `Gruendungsjahr` int(11) DEFAULT NULL,
   `StadionId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `mannschaft`
@@ -62,18 +63,18 @@ CREATE TABLE `spieler` (
   `Position` varchar(32) DEFAULT NULL,
   `Marktwert` double DEFAULT NULL,
   `MannschaftId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `spieler`
 --
 
 INSERT INTO `spieler` (`SpielerId`, `Vorname`, `Nachname`, `Geburtsdatum`, `Nationalitaet`, `Email`, `Position`, `Marktwert`, `MannschaftId`) VALUES
-(21, 'Jude', 'Bellingham', '2003-06-29', 'Nationalität1', 'jude.bellingham@gmail.com', 'Mittelfeld', 120000000, 1),
-(22, 'Karim', 'Benzema', '1987-12-19', 'Nationalität2', 'karim.benzema@gmail.com', 'Stürmer', 35000000, 2),
-(23, 'Otar', 'Kiteishvili', '1996-06-02', 'Nationalität3', 'otar.kiteishvili@gmail.com', 'Mittelfeld', 760000, 3),
-(24, 'Erling', 'Haaland', '2000-07-21', 'Nationalität4', 'erling.haaland@gmail.com', 'Stürmer', 170000000, 4),
-(25, 'Zlatan', 'Ibrahimović', '1981-10-03', 'Nationalität5', 'zlatan.ibrahimovic@gmail.com', 'Stürmer', 2000000, 5);
+(21, 'Jude', 'Bellingham', '2003-06-29', 'ENG', 'jude.bellingham@gmail.com', 'Mittelfeld', 120000000, 1),
+(22, 'Karim', 'Benzema', '1987-12-19', 'FRA', 'karim.benzema@gmail.com', 'Stürmer', 35000000, 2),
+(23, 'Otar', 'Kiteishvili', '1996-06-02', 'GEO', 'otar.kiteishvili@gmail.com', 'Mittelfeld', 760000, 3),
+(24, 'Erling', 'Haaland', '2000-07-21', 'NOR', 'erling.haaland@gmail.com', 'Stürmer', 170000000, 4),
+(25, 'Zlatan', 'Ibrahimović', '1981-10-03', 'SWE', 'zlatan.ibrahimovic@gmail.com', 'Stürmer', 2000000, 5);
 
 -- --------------------------------------------------------
 
@@ -87,7 +88,7 @@ CREATE TABLE `sponsoren` (
   `Email` varchar(64) DEFAULT NULL,
   `Telefonnummer` int(11) DEFAULT NULL,
   `Chef` varchar(64) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `sponsoren`
@@ -110,7 +111,7 @@ CREATE TABLE `sponsor_mannschaft` (
   `SponsorId` int(11) DEFAULT NULL,
   `MannschaftId` int(11) DEFAULT NULL,
   `Sponsorbetrag` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `sponsor_mannschaft`
@@ -135,7 +136,7 @@ CREATE TABLE `stadien` (
   `Zuschaueranzahl` int(11) DEFAULT NULL,
   `Flaeche` int(11) DEFAULT NULL,
   `Baujahr` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `stadien`
@@ -160,7 +161,7 @@ CREATE TABLE `stadt` (
   `Land` varchar(8) DEFAULT NULL,
   `Einwohneranzahl` int(11) DEFAULT NULL,
   `Flaeche` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `stadt`
@@ -187,7 +188,7 @@ CREATE TABLE `trainer` (
   `Email` varchar(128) DEFAULT NULL,
   `Nationalitaet` varchar(16) DEFAULT NULL,
   `MannschaftId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `trainer`

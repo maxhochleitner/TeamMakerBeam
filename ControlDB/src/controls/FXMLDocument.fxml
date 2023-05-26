@@ -8,42 +8,42 @@
 
 <AnchorPane id="AnchorPane" prefHeight="432.0" prefWidth="533.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.FXMLDocumentController">
    <children>
-      <Text fill="#0057ff" layoutX="72.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fußballteammagment">
+      <Text layoutX="161.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Managment">
          <font>
             <Font name="Arial" size="40.0" />
          </font>
       </Text>
-      <Text layoutX="24.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vorname" wrappingWidth="66.1640625">
+      <Text layoutX="6.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vorname" wrappingWidth="66.1640625">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="24.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nachname" wrappingWidth="78.1640625">
+      <Text layoutX="6.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nachname" wrappingWidth="78.1640625">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="24.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geburtsdatum" wrappingWidth="113.1640625">
+      <Text layoutX="6.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geburtsdatum" wrappingWidth="113.16405813395977">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="24.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="113.1640625">
+      <Text layoutX="6.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="113.1640625">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="24.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Position" wrappingWidth="113.1640625">
+      <Text layoutX="6.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Position" wrappingWidth="113.1640625">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="21.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marktwert (in mio)" wrappingWidth="138.1640625">
+      <Text layoutX="6.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marktwert " wrappingWidth="78.164061576128">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="24.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MannschaftID" wrappingWidth="113.1640625">
+      <Text layoutX="6.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MannschaftID" wrappingWidth="113.1640625">
          <font>
             <Font size="16.0" />
          </font>
@@ -52,39 +52,39 @@
       <TextField fx:id="lastname" layoutX="329.0" layoutY="106.0" />
       <TextField fx:id="gebdat" layoutX="329.0" layoutY="142.0" />
       <TextField fx:id="email" layoutX="329.0" layoutY="214.0" />
-      <TextField fx:id="position" layoutX="330.0" layoutY="251.0" />
+      <TextField fx:id="position" layoutX="329.0" layoutY="250.0" />
       <TextField fx:id="marktvalue" layoutX="329.0" layoutY="283.0" />
       <TextField fx:id="mannschaftid" layoutX="329.0" layoutY="315.0" />
-      <Button fx:id="confirmbtn" layoutX="404.0" layoutY="368.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="101.0" text="Confirm">
+      <Button fx:id="confirmbtn" layoutX="404.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleConfirmButton" prefHeight="38.0" prefWidth="101.0" text="Confirm">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="showbtn" layoutX="216.0" layoutY="368.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="101.0" text="Show">
+      <Button fx:id="showbtn" layoutX="216.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleShowButton" prefHeight="38.0" prefWidth="101.0" text="Show">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="forwardbtn" layoutX="323.0" layoutY="368.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="38.0" text="&gt;">
+      <Button fx:id="forwardbtn" layoutX="323.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleForwardButton" prefHeight="39.0" prefWidth="38.0" text="&gt;">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="backbtn" layoutX="170.0" layoutY="368.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="38.0" text="&lt;">
+      <Button fx:id="backbtn" layoutX="170.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="39.0" prefWidth="38.0" text="&lt;">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="deletebtn" layoutX="22.0" layoutY="368.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="101.0" text="Delete">
+      <Button fx:id="deletebtn" layoutX="22.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="38.0" prefWidth="101.0" text="Delete">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Text layoutX="26.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationalität" wrappingWidth="91.1640625">
+      <Text layoutX="6.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationalität" wrappingWidth="91.1640625">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="nationalitaet" layoutX="329.0" layoutY="176.0" />
+      <TextField fx:id="natio" layoutX="329.0" layoutY="176.0" />
    </children>
 </AnchorPane>
