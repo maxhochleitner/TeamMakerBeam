@@ -50,6 +50,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField natio;
 
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         myPersonList = PersonDAO.getPersons();
@@ -66,12 +67,29 @@ public class FXMLDocumentController implements Initializable {
         BooleanBinding isLastPerson = currentIndex.isEqualTo(myPersonList.size() - 1);
         backbtn.disableProperty().bind(isFirstPerson);
         forwardbtn.disableProperty().bind(isLastPerson);
-    }
 
-    @FXML
-    private void handleConfirmButton(ActionEvent event) {
-        // Handle the confirm button action
+        // Zeige die Details der ersten Person an (falls vorhanden)
+        if (!myPersonList.isEmpty()) {
+            currentIndex.set(0);
     }
+}
+    
+
+        @FXML
+        private void handleConfirmButton(ActionEvent event) {
+                // Aktualisiere die Daten der aktuell ausgewählten Person
+                actPerson.setVorname(firstname.getText());
+                actPerson.setNachname(lastname.getText());
+                actPerson.setGeburtsdatum(Integer.parseInt(gebdat.getText()));
+                actPerson.setNationalitaet(natio.getText());
+                actPerson.setEmail(email.getText());
+                actPerson.setPosition(position.getText());
+                actPerson.setMarktwert(Integer.parseInt(marktvalue.getText()));
+                actPerson.setMannschaftId(Integer.parseInt(mannschaftid.getText()));
+
+                // Speichern der aktualisierten Person in der Datenbank oder Datenquelle
+                PersonDAO.update(actPerson);
+}
 
     @FXML
     private void handleShowButton(ActionEvent event) {
@@ -96,8 +114,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleDeleteButton(ActionEvent event) {
-        // Handle the delete button action
+
     }
+
 
     private void showPersonDetails(Person person) {
         firstname.setText(person.getVorname());
@@ -108,5 +127,7 @@ public class FXMLDocumentController implements Initializable {
         position.setText(person.getPosition());
         marktvalue.setText(String.valueOf(person.getMarktwert()));
         mannschaftid.setText(String.valueOf(person.getMannschaftId()));
+        
+        actPerson = person; // Initialisiere das actPerson-Objekt mit der übergebenen Person
     }
 }
