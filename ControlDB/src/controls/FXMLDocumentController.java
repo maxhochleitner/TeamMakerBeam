@@ -1,8 +1,6 @@
 package controls;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.ListProperty;
@@ -82,7 +80,7 @@ public class FXMLDocumentController implements Initializable {
                 // Aktualisiere die Daten der aktuell ausgewählten Person
                 actPerson.setVorname(firstname.getText());
                 actPerson.setNachname(lastname.getText());
-                actPerson.setGeburtsdatum(Date.parse(gebdat.getText()));
+                actPerson.setGeburtsdatum(Integer.parseInt(gebdat.getText()));
                 actPerson.setNationalitaet(natio.getText());
                 actPerson.setEmail(email.getText());
                 actPerson.setPosition(position.getText());
