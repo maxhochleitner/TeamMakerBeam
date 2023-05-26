@@ -61,7 +61,8 @@ public class PersonDAO {
      * @param actPerson die aktualisierte Person
      */
     public static void update(Person actPerson) {
-        String sql = "UPDATE Spieler SET "
+        System.out.println("Update method called.");
+        String sql = "UPDATE spieler SET "
             + "Vorname = '" + actPerson.getVorname() + "', "
             + "Nachname = '" + actPerson.getNachname() + "', "
             + "Geburtsdatum = " + actPerson.getGeburtsdatum() + ", "
@@ -69,7 +70,7 @@ public class PersonDAO {
             + "Email = '" + actPerson.getEmail() + "', "
             + "Position = '" + actPerson.getPosition() + "', "
             + "Marktwert = " + actPerson.getMarktwert() + ", "
-            + "ManschaftId = " + actPerson.getMannschaftId() + " "
+            + "MannschaftId = " + actPerson.getMannschaftId() + " "
             + "WHERE SpielerId = " + actPerson.getSpielerId();
         
         System.out.println("sql: " + sql);
