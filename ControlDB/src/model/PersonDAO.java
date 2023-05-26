@@ -29,15 +29,15 @@ public class PersonDAO {
             
             while (rs.next()) {
                 personsList.add(new Person(
-                    rs.getInt("id"),
-                    rs.getString("firstname"),
-                    rs.getString("lastname"),
-                    rs.getInt("gebdat"),
-                    rs.getString("nationalität"),
-                    rs.getString("email"),
-                    rs.getString("position"),
-                    rs.getInt("marktwert"),
-                    rs.getInt("manschaftid")
+                    rs.getInt("SpielerId"),
+                    rs.getString("Vorname"),
+                    rs.getString("Nachname"),
+                    rs.getInt("Geburtsdatum"),
+                    rs.getString("Nationalitaet"),
+                    rs.getString("Email"),
+                    rs.getString("Position"),
+                    rs.getInt("Marktwert"),
+                    rs.getInt("MannschaftId")
                 ));
             }
         } catch (SQLException ex) {
@@ -62,15 +62,15 @@ public class PersonDAO {
      */
     public static void update(Person actPerson) {
         String sql = "UPDATE Spieler SET "
-            + "firstname = '" + actPerson.getFirstName() + "', "
-            + "lastname = '" + actPerson.getLastName() + "', "
-            + "gebdat = " + actPerson.getGebdat() + ", "
-            + "nationalität = '" + actPerson.getNationalitaet() + "', "
-            + "email = '" + actPerson.getEmail() + "', "
-            + "position = '" + actPerson.getPosition() + "', "
-            + "marktwert = " + actPerson.getMarktwert() + ", "
-            + "manschaftid = " + actPerson.getMannschaftid() + " "
-            + "WHERE id = " + actPerson.getId();
+            + "Vorname = '" + actPerson.getFirstName() + "', "
+            + "Nachname = '" + actPerson.getLastName() + "', "
+            + "Geburtsdatum = " + actPerson.getGebdat() + ", "
+            + "Nationalitaet = '" + actPerson.getNationalitaet() + "', "
+            + "Email = '" + actPerson.getEmail() + "', "
+            + "Position = '" + actPerson.getPosition() + "', "
+            + "Marktwert = " + actPerson.getMarktwert() + ", "
+            + "ManschaftId = " + actPerson.getMannschaftid() + " "
+            + "WHERE SpielerId = " + actPerson.getSpielerId();
         
         System.out.println("sql: " + sql);
         DML_DAO.executeDML(sql);

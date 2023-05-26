@@ -1,85 +1,78 @@
-package model;
-
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 public class Person {
-    private int id;
-    private StringProperty firstnameProperty;
-    private StringProperty lastNameProperty;
-    private IntegerProperty GebdatProperty;
-    private StringProperty nationalitaetProperty;
+    private int spielerId;
+    private StringProperty vornameProperty;
+    private StringProperty nachnameProperty;
+    private IntegerProperty geburtsdatumProperty;
+    private StringProperty NationalitaetProperty;
     private StringProperty emailProperty;
     private StringProperty positionProperty;
     private IntegerProperty marktwertProperty;
-    private IntegerProperty mannschaftidProperty;
+    private IntegerProperty mannschaftIdProperty;
 
-    public Person(int id, String lastName, String firstName, int gebdat, String nationalitaet, String email, String position, int martwert, int mannschaftid) {
-        this.id = id;
-        this.lastNameProperty = new SimpleStringProperty(lastName);
-        this.firstnameProperty = new SimpleStringProperty(firstName);
-        this.GebdatProperty = new SimpleIntegerProperty(gebdat);
-        this.nationalitaetProperty = new SimpleStringProperty(nationalitaet);
+    public Person(int spielerId, String vorname, String nachname, int geburtsdatum, String Nationalitaet, String email, String position, int marktwert, int mannschaftId) {
+        this.spielerId = spielerId;
+        this.vornameProperty = new SimpleStringProperty(vorname);
+        this.nachnameProperty = new SimpleStringProperty(nachname);
+        this.geburtsdatumProperty = new SimpleIntegerProperty(geburtsdatum);
+        this.NationalitaetProperty = new SimpleStringProperty(Nationalitaet);
         this.emailProperty = new SimpleStringProperty(email);
         this.positionProperty = new SimpleStringProperty(position);
-        this.marktwertProperty = new SimpleIntegerProperty(martwert);
-        this.mannschaftidProperty = new SimpleIntegerProperty(mannschaftid);
+        this.marktwertProperty = new SimpleIntegerProperty(marktwert);
+        this.mannschaftIdProperty = new SimpleIntegerProperty(mannschaftId);
     }
 
-    public int getId() {
-        return id;
+    public int getSpielerId() {
+        return spielerId;
     }
 
-    public String getLastName() {
-        return lastNameProperty.get();
+    public String getVorname() {
+        return vornameProperty.get();
     }
 
-    public StringProperty lastNameProperty() {
-        return lastNameProperty;
+    public StringProperty vornameProperty() {
+        return vornameProperty;
     }
 
-    public void setLastName(String lastName) {
-        this.lastNameProperty.set(lastName);
+    public void setVorname(String vorname) {
+        this.vornameProperty.set(vorname);
     }
 
-    public String getFirstName() {
-        return firstnameProperty.get();
+    public String getNachname() {
+        return nachnameProperty.get();
     }
 
-    public StringProperty firstNameProperty() {
-        return firstnameProperty;
+    public StringProperty nachnameProperty() {
+        return nachnameProperty;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstnameProperty.set(firstName);
+    public void setNachname(String nachname) {
+        this.nachnameProperty.set(nachname);
     }
 
-    public int getGebdat() {
-        return GebdatProperty.get();
+    public int getGeburtsdatum() {
+        return geburtsdatumProperty.get();
     }
 
-    public IntegerProperty gebdatProperty() {
-        return GebdatProperty;
+    public IntegerProperty geburtsdatumProperty() {
+        return geburtsdatumProperty;
     }
 
-    public void setGebdat(int gebdat) {
-        this.GebdatProperty.set(gebdat);
+    public void setGeburtsdatum(int geburtsdatum) {
+        this.geburtsdatumProperty.set(geburtsdatum);
     }
 
     public String getNationalitaet() {
-        return nationalitaetProperty.get();
+        return NationalitaetProperty.get();
     }
 
     public StringProperty nationalitaetProperty() {
-        return nationalitaetProperty;
+        return NationalitaetProperty;
     }
 
     public void setNationalitaet(String nationalitaet) {
-        this.nationalitaetProperty.set(nationalitaet);
+        this.NationalitaetProperty.set(nationalitaet);
     }
 
     public String getEmail() {
@@ -114,19 +107,19 @@ public class Person {
         return marktwertProperty;
     }
 
-    public void setMartwert(int martwert) {
-        this.marktwertProperty.set(martwert);
+    public void setMarktwert(int marktwert) {
+        this.marktwertProperty.set(marktwert);
     }
 
-    public int getMannschaftid() {
-        return mannschaftidProperty.get();
+    public int getMannschaftId() {
+        return mannschaftIdProperty.get();
     }
 
-    public IntegerProperty mannschaftidProperty() {
-        return mannschaftidProperty;
+    public IntegerProperty mannschaftIdProperty() {
+        return mannschaftIdProperty;
     }
 
-    public void setMannschaftid(int mannschaftid) {
-        this.mannschaftidProperty.set(mannschaftid);
+    public void setMannschaftId(int mannschaftId) {
+        this.mannschaftIdProperty.set(mannschaftId);
     }
 }
