@@ -63,79 +63,51 @@ public class FXMLDocumentController implements Initializable {
         myPersonList = PersonDAO.getPersons();
         listProperty.set(FXCollections.observableArrayList(myPersonList));
 
-        currentIndex.addListener((obs, oldIndex, newIndex) -> {
-            if (newIndex.intValue() >= 0 && newIndex.intValue() < myPersonList.size()) {
-                showPersonDetails(myPersonList.get(newIndex.intValue()));
-            }
-        });
+        // Disable all buttons except the "Show" button
+        confirmbtn.setDisable(true);
+        forwardbtn.setDisable(true);
+        backbtn.setDisable(true);
+        deletebtn.setDisable(true);
+        confirmbtn1.setDisable(true);
+
+        // Enable the "Show" button
+        showbtn.setDisable(false);
+    }
+
+    @FXML
+    private void handleConfirmButton(ActionEvent event) {
+        // Rest of the code...
+    }
+
+    @FXML
+    private void handleShowButton(ActionEvent event) {
+        myPersonList = PersonDAO.getPersons(); // Update the list of persons
+        listProperty.set(FXCollections.observableArrayList(myPersonList));
+
+        if (!myPersonList.isEmpty()) {
+            currentIndex.set(0); // Show the first record
+            showPersonDetails(myPersonList.get(0)); // Show the details of the first person
+        } else {
+            currentIndex.set(-1); // Set the currentIndex to -1 if the list is empty
+            clearPersonDetails();
+        }
+        isNewEntry = false;
+
+        // Disable the "Show" button after it has been clicked
+        showbtn.setDisable(true);
+        // Enable other buttons
+        confirmbtn.setDisable(false);
+        forwardbtn.setDisable(false);
+        backbtn.setDisable(false);
+        deletebtn.setDisable(false);
+        confirmbtn1.setDisable(false);
 
         // Enable/disable navigation buttons based on the current index
         BooleanBinding isFirstPerson = currentIndex.isEqualTo(0);
         BooleanBinding isLastPerson = currentIndex.isEqualTo(myPersonList.size() - 1);
         backbtn.disableProperty().bind(isFirstPerson);
         forwardbtn.disableProperty().bind(isLastPerson);
-
-        // Zeige die Details der ersten Person an (falls vorhanden)
-        if (!myPersonList.isEmpty()) {
-            currentIndex.set(-1); // Setze den currentIndex auf -1, um nicht automatisch den ersten Datensatz anzuzeigen
-        }
     }
-
-    @FXML
-    private void handleConfirmButton(ActionEvent event) {
-        if (isNewEntry) {
-            // Neuer Datensatz
-            actPerson = new Person(
-                0, // spielerId (you can set it to 0 or provide a unique identifier)
-                firstname.getText(), // vorname
-                lastname.getText(), // nachname
-                Integer.parseInt(gebdat.getText()), // geburtsdatum
-                natio.getText(), // Nationalitaet
-                email.getText(), // email
-                position.getText(), // position
-                Integer.parseInt(marktvalue.getText()), // marktwert
-                Integer.parseInt(mannschaftid.getText()) // mannschaftId
-            );
-
-            PersonDAO.addPerson(actPerson);
-            myPersonList = PersonDAO.getPersons(); // Aktualisiere die Liste der Personen
-            listProperty.set(FXCollections.observableArrayList(myPersonList));
-
-            currentIndex.set(myPersonList.indexOf(actPerson)); // Setze den currentIndex auf den Index der neu hinzugefügten Person
-
-            isNewEntry = false;
-        } else {
-            // Aktualisiere die Daten der aktuell ausgewählten Person
-            actPerson.setVorname(firstname.getText());
-            actPerson.setNachname(lastname.getText());
-            actPerson.setGeburtsdatum(Integer.parseInt(gebdat.getText()));
-            actPerson.setNationalitaet(natio.getText());
-            actPerson.setEmail(email.getText());
-            actPerson.setPosition(position.getText());
-            actPerson.setMarktwert(Integer.parseInt(marktvalue.getText()));
-            actPerson.setMannschaftId(Integer.parseInt(mannschaftid.getText()));
-
-            // Speichern der aktualisierten Person in der Datenbank oder Datenquelle
-            PersonDAO.update(actPerson);
-
-            myPersonList = PersonDAO.getPersons(); // Aktualisiere die Liste der Personen
-            listProperty.set(FXCollections.observableArrayList(myPersonList));
-        }
-    }
-
-    @FXML
-    private void handleShowButton(ActionEvent event) {
-        myPersonList = PersonDAO.getPersons(); // Aktualisiere die Liste der Personen
-        listProperty.set(FXCollections.observableArrayList(myPersonList));
-
-        if (!myPersonList.isEmpty()) {
-            currentIndex.set(0); // Zeige den ersten Datensatz an
-        } else {
-            currentIndex.set(-1); // Setze den currentIndex auf -1, falls die Liste leer ist
-        }
-        isNewEntry = false;
-    }
-
 
     @FXML
     private void handleForwardButton(ActionEvent event) {
