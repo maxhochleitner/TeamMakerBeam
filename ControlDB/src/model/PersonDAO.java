@@ -32,7 +32,7 @@ public class PersonDAO {
                     rs.getInt("SpielerId"),
                     rs.getString("Vorname"),
                     rs.getString("Nachname"),
-                    rs.getInt("Geburtsdatum"),
+                    rs.getInt("Geburtsjahr"),
                     rs.getString("Nationalitaet"),
                     rs.getString("Email"),
                     rs.getString("Position"),
@@ -65,7 +65,7 @@ public class PersonDAO {
         String sql = "UPDATE spieler SET "
             + "Vorname = '" + actPerson.getVorname() + "', "
             + "Nachname = '" + actPerson.getNachname() + "', "
-            + "Geburtsdatum = " + actPerson.getGeburtsdatum() + ", "
+            + "Geburtsjahr = " + actPerson.getGeburtsdatum() + ", "
             + "Nationalitaet = '" + actPerson.getNationalitaet() + "', "
             + "Email = '" + actPerson.getEmail() + "', "
             + "Position = '" + actPerson.getPosition() + "', "
