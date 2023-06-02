@@ -95,4 +95,13 @@ public class PersonDAO {
         
         DML_DAO.executeDML(sql);
     }
+        /**
+     * Löscht eine Person aus der Datenbank.
+     *
+     * @param person die zu löschende Person
+     */
+    public static void deletePerson(Person person) {
+        String sql = "DELETE FROM spieler WHERE SpielerId = " + person.getSpielerId();
+        DML_DAO.executeDML(sql);
+    }
 }

@@ -60,17 +60,12 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="showbtn" layoutX="161.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleShowButton" prefHeight="39.0" prefWidth="78.0" text="Show">
+      <Button fx:id="forwardbtn" layoutX="239.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleForwardButton" prefHeight="39.0" prefWidth="38.0" text="&gt;">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="forwardbtn" layoutX="248.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleForwardButton" prefHeight="39.0" prefWidth="38.0" text="&gt;">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="backbtn" layoutX="119.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="39.0" prefWidth="38.0" text="&lt;">
+      <Button fx:id="backbtn" layoutX="123.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="39.0" prefWidth="38.0" text="&lt;">
          <font>
             <Font size="18.0" />
          </font>
@@ -87,6 +82,11 @@
       </Text>
       <TextField fx:id="natio" layoutX="329.0" layoutY="176.0" />
       <Button fx:id="confirmbtn1" layoutX="303.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleNewButton" prefHeight="38.0" prefWidth="101.0" text="New">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="showbtn" layoutX="161.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleShowButton" prefHeight="39.0" prefWidth="78.0" text="Show">
          <font>
             <Font size="18.0" />
          </font>
