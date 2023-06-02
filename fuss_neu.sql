@@ -69,11 +69,11 @@ CREATE TABLE `spieler` (
 --
 
 INSERT INTO `spieler` (`SpielerId`, `Vorname`, `Nachname`, `Geburtsjahr`, `Nationalitaet`, `Email`, `Position`, `Marktwert`, `MannschaftId`) VALUES
-(21, 'Jude', 'Bellingham', 2003, 'ENG', 'jude.bellingham@gmail.com', 'Mittelfeld', 120000000, 1),
-(22, 'Karim', 'Benzema', 1987, 'FRA', 'karim.benzema@gmail.com', 'Stuermer', 35000000, 2),
-(23, 'Otar', 'Kiteishvili', 1996, 'GEO', 'otar.kiteishvili@gmail.com', 'Mittelfeld', 760000, 3),
-(24, 'Erling', 'Haaland', 2000, 'NOR', 'erling.haaland@gmail.com', 'Stuermer', 170000000, 4),
-(25, 'Zlatan', 'Ibrahimovic', 1981, 'SWE', 'zlatan.ibrahimovic@gmail.com', 'Stuermer', 2000000, 5);
+(1, 'Jude', 'Bellingham', 2003, 'ENG', 'jude.bellingham@gmail.com', 'Mittelfeld', 120000000, 1),
+(2, 'Karim', 'Benzema', 1987, 'FRA', 'karim.benzema@gmail.com', 'Stuermer', 35000000, 2),
+(3, 'Otar', 'Kiteishvili', 1996, 'GEO', 'otar.kiteishvili@gmail.com', 'Mittelfeld', 760000, 3),
+(4, 'Erling', 'Haaland', 2000, 'NOR', 'erling.haaland@gmail.com', 'Stuermer', 170000000, 4),
+(5, 'Zlatan', 'Ibrahimovic', 1981, 'SWE', 'zlatan.ibrahimovic@gmail.com', 'Stuermer', 2000000, 5);
 
 -- --------------------------------------------------------
 
