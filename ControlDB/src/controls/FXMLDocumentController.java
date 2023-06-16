@@ -57,27 +57,33 @@ public class FXMLDocumentController implements Initializable {
     private Button confirmbtn1;
 
     private boolean isNewEntry = false;
-    private boolean isConfirmButtonPressed = false;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         myPersonList = PersonDAO.getPersons();
         listProperty.set(FXCollections.observableArrayList(myPersonList));
 
-        // Disable all buttons except the "Show" button
-        confirmbtn.setDisable(true);
-        forwardbtn.setDisable(true);
-        backbtn.setDisable(true);
-        deletebtn.setDisable(true);
-        confirmbtn1.setDisable(true);
+        currentIndex.addListener((obs, oldIndex, newIndex) -> {
+            if (newIndex.intValue() >= 0 && newIndex.intValue() < myPersonList.size()) {
+                showPersonDetails(myPersonList.get(newIndex.intValue()));
+            }
+        });
 
-        // Enable the "Show" button
-        showbtn.setDisable(false);
+        // Enable/disable navigation buttons based on the current index
+        BooleanBinding isFirstPerson = currentIndex.isEqualTo(0);
+        BooleanBinding isLastPerson = currentIndex.isEqualTo(myPersonList.size() - 1);
+        backbtn.disableProperty().bind(isFirstPerson);
+        forwardbtn.disableProperty().bind(isLastPerson);
+
+        // Zeige die Details der ersten Person an (falls vorhanden)
+        if (!myPersonList.isEmpty()) {
+            currentIndex.set(-1); // Setze den currentIndex auf -1, um nicht automatisch den ersten Datensatz anzuzeigen
+        }
     }
 
     @FXML
     private void handleConfirmButton(ActionEvent event) {
-        if (isNewEntry && isConfirmButtonPressed) {
+        if (isNewEntry) {
             // Neuer Datensatz
             actPerson = new Person(
                 0, // spielerId (you can set it to 0 or provide a unique identifier)
@@ -98,7 +104,6 @@ public class FXMLDocumentController implements Initializable {
             currentIndex.set(myPersonList.indexOf(actPerson)); // Setze den currentIndex auf den Index der neu hinzugefügten Person
 
             isNewEntry = false;
-            isConfirmButtonPressed = false;
         } else {
             // Aktualisiere die Daten der aktuell ausgewählten Person
             actPerson.setVorname(firstname.getText());
@@ -115,103 +120,81 @@ public class FXMLDocumentController implements Initializable {
 
             myPersonList = PersonDAO.getPersons(); // Aktualisiere die Liste der Personen
             listProperty.set(FXCollections.observableArrayList(myPersonList));
-
-            isConfirmButtonPressed = false;
         }
     }
 
     @FXML
     private void handleShowButton(ActionEvent event) {
-        myPersonList = PersonDAO.getPersons(); // Update the list of persons
+        myPersonList = PersonDAO.getPersons(); // Aktualisiere die Liste der Personen
         listProperty.set(FXCollections.observableArrayList(myPersonList));
 
         if (!myPersonList.isEmpty()) {
-            currentIndex.set(0); // Show the first record
-            showPersonDetails(myPersonList.get(0)); // Show the details of the first person
+            currentIndex.set(0); // Zeige den ersten Datensatz an
         } else {
-            currentIndex.set(-1); // Set the currentIndex to -1 if the list is empty
-            clearPersonDetails();
+            currentIndex.set(-1); // Setze den currentIndex auf -1, falls die Liste leer ist
         }
         isNewEntry = false;
-
-        // Disable the "Show" button after it has been clicked
-        showbtn.setDisable(true);
-        // Enable other buttons
-        confirmbtn.setDisable(false);
-        forwardbtn.setDisable(false);
-        backbtn.setDisable(false);
-        deletebtn.setDisable(false);
-        confirmbtn1.setDisable(false);
-
-        // Enable/disable navigation buttons based on the current index
-        BooleanBinding isFirstPerson = currentIndex.isEqualTo(0);
-        BooleanBinding isLastPerson = currentIndex.isEqualTo(myPersonList.size() - 1);
-        backbtn.disableProperty().bind(isFirstPerson);
-        forwardbtn.disableProperty().bind(isLastPerson);
     }
+
 
     @FXML
     private void handleForwardButton(ActionEvent event) {
         if (currentIndex.get() < myPersonList.size() - 1) {
             currentIndex.set(currentIndex.get() + 1);
-            showPersonDetails(myPersonList.get(currentIndex.get())); // Aktualisiere die angezeigten Details
-            isNewEntry = false;
-            isConfirmButtonPressed = false;
         }
+        isNewEntry = false;
     }
 
     @FXML
     private void handleBackButton(ActionEvent event) {
         if (currentIndex.get() > 0) {
             currentIndex.set(currentIndex.get() - 1);
-            showPersonDetails(myPersonList.get(currentIndex.get())); // Aktualisiere die angezeigten Details
-            isNewEntry = false;
-            isConfirmButtonPressed = false;
         }
+        isNewEntry = false;
     }
 
     @FXML
-   private void handleDeleteButton(ActionEvent event) {
-       if (actPerson != null) {
-           Alert confirmationAlert = new Alert(AlertType.CONFIRMATION);
-           confirmationAlert.setTitle("Datensatz löschen");
-           confirmationAlert.setHeaderText("Möchtest du den Datensatz wirklich löschen?");
-           confirmationAlert.setContentText("Vorname: " + actPerson.getVorname() + "\nNachname: " + actPerson.getNachname());
+    private void handleDeleteButton(ActionEvent event) {
+        if (actPerson != null) {
+            Alert confirmationAlert = new Alert(AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Datensatz löschen");
+            confirmationAlert.setHeaderText("Möchtest du den Datensatz wirklich löschen?");
+            confirmationAlert.setContentText("Vorname: " + actPerson.getVorname() + "\nNachname: " + actPerson.getNachname());
 
-           Optional<ButtonType> result = confirmationAlert.showAndWait();
-           if (result.isPresent() && result.get() == ButtonType.OK) {
-               PersonDAO.deletePerson(actPerson);
-               int currentIndexValue = currentIndex.get();
-               myPersonList.remove(actPerson);
+            Optional<ButtonType> result = confirmationAlert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                PersonDAO.deletePerson(actPerson);
+                int currentIndexValue = currentIndex.get();
+                myPersonList.remove(actPerson);
 
-               if (currentIndexValue >= myPersonList.size()) {
-                   // Wenn der gelöschte Datensatz der letzte war, gehe zum vorherigen Datensatz
-                   currentIndexValue--;
-               }
+                if (currentIndexValue >= myPersonList.size()) {
+                    // Wenn der gelöschte Datensatz der letzte war, gehe zum vorherigen Datensatz
+                    currentIndexValue--;
+                }
 
-               if (currentIndexValue >= 0 && currentIndexValue < myPersonList.size()) {
-                   // Zeige den nächsten Datensatz an
-                   currentIndex.set(currentIndexValue);
-               } else {
-                   // Liste ist leer oder currentIndex ist außerhalb des gültigen Bereichs
-                   currentIndex.set(-1);
-                   clearPersonDetails();
-               }
-           }
-       }
-   }
+                if (currentIndexValue >= 0 && currentIndexValue < myPersonList.size()) {
+                    // Zeige den nächsten Datensatz an
+                    currentIndex.set(currentIndexValue);
+                } else {
+                    // Liste ist leer oder currentIndex ist außerhalb des gültigen Bereichs
+                    currentIndex.set(-1);
+                    clearPersonDetails();
+                }
+            }
+        }
+    }
 
-   private void clearPersonDetails() {
-       firstname.clear();
-       lastname.clear();
-       gebdat.clear();
-       natio.clear();
-       email.clear();
-       position.clear();
-       marktvalue.clear();
-       mannschaftid.clear();
-       actPerson = null;
-   }
+    private void clearPersonDetails() {
+        firstname.clear();
+        lastname.clear();
+        gebdat.clear();
+        natio.clear();
+        email.clear();
+        position.clear();
+        marktvalue.clear();
+        mannschaftid.clear();
+        actPerson = null;
+    }
 
     @FXML
     private void handleNewButton(ActionEvent event) {
@@ -224,16 +207,6 @@ public class FXMLDocumentController implements Initializable {
         position.clear();
         marktvalue.clear();
         mannschaftid.clear();
-
-        // Disable all buttons except the "Confirm" button
-        confirmbtn.setDisable(false);
-        forwardbtn.setDisable(true);
-        backbtn.setDisable(true);
-        deletebtn.setDisable(true);
-        confirmbtn1.setDisable(true);
-
-        // Set the isConfirmButtonPressed flag to true
-        isConfirmButtonPressed = true;
     }
 
     private void showPersonDetails(Person person) {
